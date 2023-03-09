@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.urls import path
 
 from Bursa import settings
 from products.views import *
@@ -25,10 +26,11 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
-    path('about/', include('products.urls')),
-]
+    #path('captcha/', include('captcha.urls')),
 
-handler404 = pegeNotFound
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = pegeNotFound
